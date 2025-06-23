@@ -16,15 +16,11 @@ export const PostsList = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Функция загрузки постов по странице
   const loadPosts = async (pageToLoad: number) => {
     setLoading(true);
     setError(null);
     try {
-      // JSONPlaceholder не поддерживает пагинацию через параметры,
-      // поэтому загрузим все и сделаем пагинацию на фронте,
-      // либо можно загружать по id диапазону.
-      // Здесь сделаем загрузку всех один раз при первом запросе.
+      
       if (posts.length === 0) {
         const response = await fetch("https://jsonplaceholder.typicode.com/posts");
         if (!response.ok) {
@@ -40,20 +36,19 @@ export const PostsList = () => {
     }
   };
 
-  // При монтировании загружаем данные
   useEffect(() => {
     loadPosts(1);
   }, []);
 
-  // Отфильтрованные посты по поиску
+ 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Посты для текущей страницы
+
   const displayedPosts = filteredPosts.slice(0, page * POSTS_PER_PAGE);
 
-  // Обработчик кнопки "Загрузить ещё"
+
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
   };
@@ -67,7 +62,7 @@ export const PostsList = () => {
         value={searchTerm}
         onChange={(e) => {
           setSearchTerm(e.target.value);
-          setPage(1); // сбрасываем страницу при новом поиске
+          setPage(1); 
         }}
         style={{ marginBottom: 10, padding: "5px", width: "100%" }}
       />

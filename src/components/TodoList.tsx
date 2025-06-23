@@ -33,7 +33,6 @@ export const TodoList = () => {
     setTodos(newTodos);
   };
 
-  // Удаление задачи по индексу
   const deleteTodo = (index: number) => {
     setTodos(todos.filter((_, i) => i !== index));
   };
@@ -58,9 +57,9 @@ export const TodoList = () => {
               cursor: "pointer",
               textDecoration: todo.completed ? "line-through" : "none",
               color: todo.completed ? "gray" : "black",
-              userSelect: "none", // чтобы не выделялось при кликах
+              userSelect: "none", 
             }}
-            // Клик — переключение выполненности
+            // Клик — задача выполнена
             onClick={() => toggleCompleted(index)}
             // Двойной клик — удаление задачи
             onDoubleClick={() => deleteTodo(index)}

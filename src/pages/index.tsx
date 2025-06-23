@@ -1,6 +1,6 @@
 import React from "react";
-import { TodoList } from "../components/TodoList"; // путь поправьте под ваш проект
-import { PostsList } from "../components/PostList"; // путь поправьте под ваш проект
+import { TodoList } from "../components/TodoList"; 
+import { PostsList } from "../components/PostList"; 
 
 export default function HomePage() {
   return (
